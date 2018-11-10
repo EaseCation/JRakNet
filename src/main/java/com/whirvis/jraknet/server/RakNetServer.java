@@ -606,6 +606,7 @@ public class RakNetServer implements GeminusRakNetPeer, RakNetServerListener {
 				// Are there any problems?
 				RakNetPacket errorPacket = this.validateSender(sender);
 				if (errorPacket == null) {
+					/*
 					if (connectionRequestOne.protocolVersion != this.getProtocolVersion()) {
 						// Incompatible protocol
 						IncompatibleProtocol incompatibleProtocol = new IncompatibleProtocol();
@@ -613,7 +614,7 @@ public class RakNetServer implements GeminusRakNetPeer, RakNetServerListener {
 						incompatibleProtocol.serverGuid = this.guid;
 						incompatibleProtocol.encode();
 						this.sendNettyMessage(incompatibleProtocol, sender);
-					} else {
+					} else {*/
 						// Everything passed, one last check...
 						if (connectionRequestOne.maximumTransferUnit <= this.maximumTransferUnit) {
 							OpenConnectionResponseOne connectionResponseOne = new OpenConnectionResponseOne();
@@ -622,7 +623,7 @@ public class RakNetServer implements GeminusRakNetPeer, RakNetServerListener {
 							connectionResponseOne.encode();
 							this.sendNettyMessage(connectionResponseOne, sender);
 						}
-					}
+					//}
 				} else {
 					this.sendNettyMessage(errorPacket, sender);
 				}
